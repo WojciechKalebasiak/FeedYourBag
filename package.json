@@ -1,0 +1,11 @@
+{
+  "name": "feedyourbag",
+  "version": "1.0.0",
+  "description": "Application for owners to get feedback from customers",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "WojciechKaleb",
+  "license": "ISC"
+}
