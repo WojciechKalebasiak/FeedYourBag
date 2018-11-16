@@ -3,9 +3,17 @@
   "version": "1.0.0",
   "description": "Application for owners to get feedback from customers",
   "main": "index.js",
+  "engines": {
+    "node": "8.11.3",
+    "npm": "6.1.0"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server/index.js",
+    "watch": "nodemon server"
   },
   "author": "WojciechKaleb",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
 }
