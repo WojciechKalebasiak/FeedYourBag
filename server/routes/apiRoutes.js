@@ -10,4 +10,7 @@ router.get("/logout", (req, res) => {
     res.redirect("../../");
   }
 });
+router.get("/", (req, res) => {
+  res.send({ Api: true });
+});
 module.exports = router;
