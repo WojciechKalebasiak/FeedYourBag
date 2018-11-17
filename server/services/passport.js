@@ -40,7 +40,7 @@ passport.use(
     {
       clientID: keys.facebookClientID,
       clientSecret: keys.facebookClientSecret,
-      callbackURL: 'https://damp-ocean-90152.herokuapp.com/auth/facebook/callback',
+      callbackURL: "https://feedyourbag.herokuapp.com/auth/facebook/callback"
     },
     (accessToken, refreshToken, profile, done) => {
       User.findOne({ facebookID: profile.id }).then(user => {
@@ -56,4 +56,3 @@ passport.use(
     }
   )
 );
-

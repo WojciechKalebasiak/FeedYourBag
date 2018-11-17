@@ -7,11 +7,13 @@ router.get(
 router.get("/google/callback", passport.authenticate("google"), (req, res) => {
   res.redirect("../../api/current_user");
 });
+
+router.get("/facebook", passport.authenticate("facebook"));
 router.get(
-  "/facebook",
-  passport.authenticate("facebook", { scope: ["profile", "email"] })
+  "/facebook/callback",
+  passport.authenticate("facebook", {
+    successRedirect: "../../api/current_user",
+    failureRedirect: "/"
+  })
 );
-router.get("/facebook/callback", passport.authenticate("facebook"), (req, res) => {
-  res.redirect("../../api/current_user");
-});
 module.exports = router;
