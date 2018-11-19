@@ -40,7 +40,7 @@ passport.use(
     {
       clientID: keys.facebookClientID,
       clientSecret: keys.facebookClientSecret,
-      callbackURL: "https://feedyourbag.herokuapp.com/auth/facebook/callback"
+      callbackURL: "/auth/facebook/callback"
     },
     (accessToken, refreshToken, profile, done) => {
       User.findOne({ facebookID: profile.id }).then(user => {
