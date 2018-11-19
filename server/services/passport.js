@@ -21,17 +21,17 @@ passport.use(
       callbackURL: "/auth/google/callback",
       proxy: true
     },
-    (accessToken, refreshToken, profile, done) => {
-      User.findOne({ googleID: profile.id }).then(user => {
-        if (user) {
-          done(null, user);
-        } else {
-          new User({ googleID: profile.id, name: profile.displayName })
-            .save()
-            .then(user => done(null, user))
-            .catch(err => done(err));
-        }
-      });
+    async (accessToken, refreshToken, profile, done) => {
+      const existingUser = await User.findOne({ googleID: profile.id });
+      if (existingUser) {
+        done(null, existingUser);
+      } else {
+        const newUser = await new User({
+          googleID: profile.id,
+          name: profile.displayName
+        }).save();
+        done(null, newUser);
+      }
     }
   )
 );
@@ -42,17 +42,19 @@ passport.use(
       clientSecret: keys.facebookClientSecret,
       callbackURL: "/auth/facebook/callback"
     },
-    (accessToken, refreshToken, profile, done) => {
-      User.findOne({ facebookID: profile.id }).then(user => {
-        if (user) {
-          done(null, user);
-        } else {
-          new User({ facebookID: profile.id, name: profile.displayName })
-            .save()
-            .then(user => done(null, user))
-            .catch(err => done(err));
-        }
+    async (accessToken, refreshToken, profile, done) => {
+      const existingUser = await User.findOne({
+        facebookID: profile.id
       });
+      if (existingUser) {
+        done(null, existingUser);
+      } else {
+        const newUser = await new User({
+          facebookID: profile.id,
+          name: profile.displayName
+        }).save();
+        done(null, newUser);
+      }
     }
   )
 );
