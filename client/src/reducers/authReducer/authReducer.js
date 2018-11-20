@@ -1,8 +1,16 @@
+import { FETCH_USER } from "../../actions/actionTypes";
 const initialState = {
-  isAuthorized: false
+  isAuthorized: null,
+  user: null
 };
 const reducer = (state = initialState, action) => {
+  console.log(action);
   switch (action.type) {
+    case FETCH_USER:
+      return {
+        isAuthorized: action.payload ? true : false,
+        user: action.payload || null
+      };
     default:
       return state;
   }
