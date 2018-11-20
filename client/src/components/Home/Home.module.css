@@ -1,0 +1,17 @@
+.Home {
+    background: url('../../assets//bgi.jpg') center/cover;
+    height: 100%;
+    padding-top: 10%;
+    padding-left: 3%;
+}
+.Emails {
+    font-size: 2.5em;
+}
+.Feedback {
+    font-size: 2.5em;
+    margin-top: 5%;
+}
+.MainHeading {
+    font-size: 5.75em;
+    margin-top: 5%;
+}
