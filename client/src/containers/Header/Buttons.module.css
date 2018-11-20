@@ -1,0 +1,34 @@
+.LoginButton {
+    border: none;
+    padding: 8px 10px;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background .35s ease-out;
+}
+
+.GoogleButton {
+    margin-right: 30px;
+    background-color: #4081ec;
+}
+
+.GoogleButton:hover {
+    background-color: #bcd3f8;
+}
+
+.FacebookButton {
+    background-color: #3B5998;
+}
+
+.FacebookButton:hover {
+    background-color: #a2b4db;
+}
+
+.LogoutButton {
+    background-color: #790326;
+}
+
+.LoginButton:hover {
+    background-color: #fa3d75;
+}
