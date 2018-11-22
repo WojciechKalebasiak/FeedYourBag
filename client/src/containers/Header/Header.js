@@ -1,42 +1,43 @@
 import React, { Component } from "react";
-import logo from "../../assets/logo.svg";
-import googleLogo from "../../assets/google-logo.png";
-import facebookLogo from "../../assets/facebook-logo.png";
+import classnames from "classnames";
+import { connect } from "react-redux";
+import Logo from "./Logo";
 import styles from "./Header.module.css";
-import classnames from 'classnames';
+import LoginButtons from "./LoginButtons";
+import LoggedButtons from "./LoggedButtons";
+import Spinner from "../../components/Spinner/Spinner";
 class Header extends Component {
+  navbarContent() {
+    const { user, isAuthorized } = this.props.auth;
+    switch (isAuthorized) {
+      case null:
+        return <Spinner style={{ height: "60px", marginLeft: "auto" }} />;
+      case true:
+        return <LoggedButtons user={user} />;
+      default:
+        return <LoginButtons />;
+    }
+  }
   render() {
+    const { isAuthorized } = this.props.auth;
     return (
       <header className={styles.Header}>
-        <nav class={styles.Navigation}>
+        <nav
+          className={classnames([styles.Navigation], {
+            [styles.AuthorizedNavigation]: isAuthorized
+          })}>
           <ul>
             <li className={styles.LogoItem}>
-              <img src={logo} alt="logo" className={styles.Logo} />
+              <Logo />
             </li>
-            <li className={styles.NavItem}>
-              <a href="/auth/google" className={classnames([styles.LoginButton], [styles.GoogleButton])}>
-                <img
-                  src={googleLogo}
-                  alt="google-logo"
-                  className={styles.socialLogo}
-                />
-                Login With Google
-              </a>
-            </li>
-            <li className={styles.NavItem}>
-              <a href="/auth/facebook" className={classnames([styles.LoginButton], [styles.FacebookButton])}>
-                <img
-                  src={facebookLogo}
-                  alt="facebook-logo"
-                  className={styles.socialLogo}
-                />
-                Login With Facebook
-              </a>
-            </li>
+            {this.navbarContent()}
           </ul>
         </nav>
       </header>
     );
   }
 }
-export default Header;
+const mapStateToProps = ({ auth }) => ({
+  auth
+});
+export default connect(mapStateToProps)(Header);

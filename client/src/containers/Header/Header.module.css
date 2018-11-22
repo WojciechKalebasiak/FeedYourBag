@@ -1,3 +1,4 @@
+/* Common */
 .Header {
     height: 7%;
     background-color: #fff;
@@ -18,45 +19,34 @@
     list-style: none;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
     height: 100%;
+    background-color: #fff;
 }
 
-.LogoItem {
+.Navigation ul li:nth-of-type(2).LoginItem {
+    margin-left: auto;
+}
+
+/* Logged Nav */
+.AuthorizedNavigation ul {
+    background-color: #000;
+}
+
+.UserItem {
     margin-right: auto;
+    margin-left: 35px;
 }
 
-.socialLogo {
-    width: 20px;
-    height: 20px;
-    display: inline-block;
-    vertical-align: middle;
-    margin-right: 8px;
-}
-
-.LoginButton {
-    border: none;
-    padding: 8px 10px;
+.Username,
+.CreditsItem {
     color: white;
+}
+.Username strong, .CreditsItem {
+    color: wheat;
     font-weight: bold;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background .35s ease-out;
 }
 
-.GoogleButton {
-    margin-right: 30px;
-    background-color: #4081ec;
-}
-
-.GoogleButton:hover {
-    background-color: #bcd3f8;
-}
-
-.FacebookButton {
-    background-color: #3B5998;
-}
-
-.FacebookButton:hover {
-    background-color: #a2b4db;
+.AddCreditsItem,
+.CreditsItem {
+    margin-right: 7%;
 }

@@ -1,9 +1,12 @@
 import React from "react";
+import { Redirect } from "react-router-dom";
+import { connect } from "react-redux";
 import styles from "./Home.module.css";
 import classnames from "classnames";
-export default function Home() {
+function Home(props) {
   return (
     <div className={styles.Home}>
+      {props.isAuthorized ? <Redirect to="/dashboard" /> : null}
       <h3 className={classnames([styles.Emails], "Heading")}>
         Send emails to your customers.
       </h3>
@@ -16,3 +19,7 @@ export default function Home() {
     </div>
   );
 }
+const mapStateToProps = ({ auth }) => ({
+  isAuthorized: auth.isAuthorized
+});
+export default connect(mapStateToProps)(Home);
