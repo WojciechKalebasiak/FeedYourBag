@@ -6,11 +6,6 @@ router.get("/current_user", (req, res) => {
 });
 router.get("/logout", (req, res) => {
   req.logout();
-  if (!req.user) {
-    res.redirect("../../");
-  }
-});
-router.get("/", (req, res) => {
-  res.send({ Api: true });
+  res.redirect("/");
 });
 module.exports = router;

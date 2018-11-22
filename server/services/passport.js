@@ -28,7 +28,9 @@ passport.use(
       } else {
         const newUser = await new User({
           googleID: profile.id,
-          name: profile.displayName
+          name: profile.displayName,
+          email: profile.emails[0].value,
+          avatar: profile.image ? profile.image.url : null
         }).save();
         done(null, newUser);
       }
@@ -40,18 +42,20 @@ passport.use(
     {
       clientID: keys.facebookClientID,
       clientSecret: keys.facebookClientSecret,
-      callbackURL: "/auth/facebook/callback"
+      callbackURL: "/auth/facebook/callback",
+      profileFields: ["id", "displayName", "emails", "photos"]
     },
     async (accessToken, refreshToken, profile, done) => {
-      const existingUser = await User.findOne({
-        facebookID: profile.id
-      });
+      console.log(profile);
+      const existingUser = await User.findOne({ facebookID: profile.id });
       if (existingUser) {
         done(null, existingUser);
       } else {
         const newUser = await new User({
           facebookID: profile.id,
-          name: profile.displayName
+          name: profile.displayName,
+          email:profile.emails[0].value,
+          avatar:profile.photos ? profile.photos[0].value : null
         }).save();
         done(null, newUser);
       }
