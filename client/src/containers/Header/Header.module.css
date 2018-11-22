@@ -41,7 +41,9 @@
 .CreditsItem {
     color: white;
 }
-.Username strong, .CreditsItem {
+
+.Username strong,
+.CreditsItem {
     color: wheat;
     font-weight: bold;
 }
@@ -49,4 +51,12 @@
 .AddCreditsItem,
 .CreditsItem {
     margin-right: 7%;
+}
+
+.Avatar {
+    border-radius: 20px;
+    width: 35px;
+    height: 35px;
+    vertical-align: middle;
+    margin-left: 10px;
 }

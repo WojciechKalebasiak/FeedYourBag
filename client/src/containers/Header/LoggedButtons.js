@@ -11,29 +11,19 @@ export default function LoggedButton(props) {
     <React.Fragment>
       <li className={styles.UserItem}>
         <span className={styles.Username}>
-          Signed as <strong>{user.name}</strong>
+          <strong>{user.googleID ? user.email : user.name}</strong>
         </span>
         {user.googleID ? (
           <img
-            src={googleLogo}
-            alt="google-logo"
-            style={{
-              width: "25px",
-              height: "25px",
-              verticalAlign: "middle",
-              marginLeft: "5px"
-            }}
+            src={user.avatar ? user.avatar : googleLogo}
+            alt="avatar"
+            className={styles.Avatar}
           />
         ) : (
           <img
-            src={facebookLogo}
-            alt="facebook-logo"
-            style={{
-              width: "25px",
-              height: "25px",
-              verticalAlign: "middle",
-              marginLeft: "5px"
-            }}
+            src={user.avatar ? user.avatar : facebookLogo}
+            alt="avatar"
+            className={styles.Avatar}
           />
         )}
       </li>
