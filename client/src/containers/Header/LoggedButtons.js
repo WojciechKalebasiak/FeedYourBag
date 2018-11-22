@@ -10,9 +10,6 @@ export default function LoggedButton(props) {
   return (
     <React.Fragment>
       <li className={styles.UserItem}>
-        <span className={styles.Username}>
-          <strong>{user.googleID ? user.email : user.name}</strong>
-        </span>
         {user.googleID ? (
           <img
             src={user.avatar ? user.avatar : googleLogo}
@@ -26,6 +23,9 @@ export default function LoggedButton(props) {
             className={styles.Avatar}
           />
         )}
+        <span className={styles.Username}>
+          <strong>{user.googleID ? user.email : user.name}</strong>
+        </span>
       </li>
       <li className={[styles.AddCreditsItem]}>
         <Link
