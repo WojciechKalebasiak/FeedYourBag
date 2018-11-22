@@ -3,8 +3,8 @@ import classnames from "classnames";
 import { connect } from "react-redux";
 import Logo from "./Logo";
 import styles from "./Header.module.css";
-import LoginButtons from "./LoginButtons";
-import LoggedButtons from "./LoggedButtons";
+import LoginButtons from "./Buttons/LoginButtons";
+import LoggedButtons from "./Buttons/LoggedButtons";
 import Spinner from "../../components/Spinner/Spinner";
 class Header extends Component {
   navbarContent() {

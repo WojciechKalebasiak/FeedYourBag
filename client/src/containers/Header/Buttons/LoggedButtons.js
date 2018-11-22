@@ -1,12 +1,13 @@
 import React from "react";
 import classnames from "classnames";
-import { Link } from "react-router-dom";
-import styles from "./Header.module.css";
+import Payments from "../Payments/Payments";
+import styles from "../Header.module.css";
 import buttonStyles from "./Buttons.module.css";
-import googleLogo from "../../assets/google-logo.png";
-import facebookLogo from "../../assets/facebook-logo.png";
+import googleLogo from "../../../assets/google-logo.png";
+import facebookLogo from "../../../assets/facebook-logo.png";
 export default function LoggedButton(props) {
-  const { user, credits } = props;
+  const { user } = props;
+  const credits = user.credits;
   return (
     <React.Fragment>
       <li className={styles.UserItem}>
@@ -28,14 +29,7 @@ export default function LoggedButton(props) {
         </span>
       </li>
       <li className={[styles.AddCreditsItem]}>
-        <Link
-          to="/add-credits"
-          className={classnames(
-            [buttonStyles.NavButton],
-            [buttonStyles.AddCreditsButton]
-          )}>
-          Add Credits
-        </Link>
+        <Payments />
       </li>
       <li className={styles.CreditsItem}>Credits: {credits}</li>
       <li className={styles.LogoutItem}>

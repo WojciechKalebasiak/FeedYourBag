@@ -1,9 +1,9 @@
 import React from "react";
 import classnames from "classnames";
-import googleLogo from "../../assets/google-logo.png";
-import facebookLogo from "../../assets/facebook-logo.png";
+import googleLogo from "../../../assets/google-logo.png";
+import facebookLogo from "../../../assets/facebook-logo.png";
 import buttonStyles from "./Buttons.module.css";
-import styles from "./Header.module.css";
+import styles from "../Header.module.css";
 export default function LoginButtons() {
   return (
     <React.Fragment>
