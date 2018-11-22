@@ -1,0 +1,11 @@
+.Dashboard {
+    text-align: center;
+}
+
+.fadeEnter {
+    background-color: red
+}
+
+.fadeEnterActive {
+    background-color: blue;
+}

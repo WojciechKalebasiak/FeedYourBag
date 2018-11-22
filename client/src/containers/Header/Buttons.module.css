@@ -1,4 +1,4 @@
-.LoginButton {
+.NavButton {
     border: none;
     padding: 8px 10px;
     color: white;
@@ -7,14 +7,20 @@
     border-radius: 5px;
     transition: background .35s ease-out;
 }
-
+.socialLogo {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 8px;
+}
 .GoogleButton {
     margin-right: 30px;
     background-color: #4081ec;
 }
 
 .GoogleButton:hover {
-    background-color: #bcd3f8;
+    background-color: #124fb4;
 }
 
 .FacebookButton {
@@ -22,13 +28,21 @@
 }
 
 .FacebookButton:hover {
-    background-color: #a2b4db;
+    background-color: #1f2e4f;
 }
 
 .LogoutButton {
     background-color: #790326;
 }
 
-.LoginButton:hover {
-    background-color: #fa3d75;
+.LogoutButton:hover {
+    background-color: #dc0545;
+}
+
+.AddCreditsButton {
+    background-color: #0b8b0a;
+    
+}
+.AddCreditsButton:hover {
+    background-color: #11da10;
 }

@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
-import Header from "../Header/Header";
-import Home from "../../components/Home/Home";
 import { fetchUser } from "../../actions";
 import { connect } from "react-redux";
+import Dashboard from "../Dashboard/Dashboard";
+import Header from "../Header/Header";
+import Home from "../../components/Home/Home";
 class App extends Component {
   componentDidMount() {
     this.props.fetchUser();
@@ -15,6 +16,7 @@ class App extends Component {
           <Header />
           <div className="container">
             <Route path="/" exact component={Home} />
+            <Route path="/dashboard" exact component={Dashboard} />
           </div>
         </React.Fragment>
       </BrowserRouter>

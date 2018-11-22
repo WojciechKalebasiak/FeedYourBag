@@ -1,3 +1,4 @@
+/* Common */
 .Header {
     height: 7%;
     background-color: #fff;
@@ -18,18 +19,34 @@
     list-style: none;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
     height: 100%;
+    background-color: #fff;
 }
 
-.LogoItem {
+.Navigation ul li:nth-of-type(2).LoginItem {
+    margin-left: auto;
+}
+
+/* Logged Nav */
+.AuthorizedNavigation ul {
+    background-color: #000;
+}
+
+.UserItem {
     margin-right: auto;
+    margin-left: 35px;
 }
 
-.socialLogo {
-    width: 20px;
-    height: 20px;
-    display: inline-block;
-    vertical-align: middle;
-    margin-right: 8px;
+.Username,
+.CreditsItem {
+    color: white;
+}
+.Username strong, .CreditsItem {
+    color: wheat;
+    font-weight: bold;
+}
+
+.AddCreditsItem,
+.CreditsItem {
+    margin-right: 7%;
 }

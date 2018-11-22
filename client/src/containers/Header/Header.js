@@ -1,31 +1,34 @@
 import React, { Component } from "react";
 import classnames from "classnames";
-import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import logo from "../../assets/logo.svg";
+import Logo from "./Logo";
 import styles from "./Header.module.css";
 import LoginButtons from "./LoginButtons";
-import LogoutButton from "./LogoutButton";
+import LoggedButtons from "./LoggedButtons";
 import Spinner from "../../components/Spinner/Spinner";
 class Header extends Component {
   navbarContent() {
-    switch (this.props.isAuthorized) {
+    const { user, isAuthorized } = this.props.auth;
+    switch (isAuthorized) {
       case null:
-        return <Spinner style={{ height: "60px" }} />;
+        return <Spinner style={{ height: "60px", marginLeft: "auto" }} />;
       case true:
-        return <LogoutButton />;
-      case false:
+        return <LoggedButtons user={user} />;
+      default:
         return <LoginButtons />;
     }
   }
   render() {
-    const { isAuthorized } = this.props;
+    const { isAuthorized } = this.props.auth;
     return (
       <header className={styles.Header}>
-        <nav className={styles.Navigation}>
+        <nav
+          className={classnames([styles.Navigation], {
+            [styles.AuthorizedNavigation]: isAuthorized
+          })}>
           <ul>
             <li className={styles.LogoItem}>
-              <img src={logo} alt="logo" className={styles.Logo} />
+              <Logo />
             </li>
             {this.navbarContent()}
           </ul>
@@ -35,6 +38,6 @@ class Header extends Component {
   }
 }
 const mapStateToProps = ({ auth }) => ({
-  isAuthorized: auth.isAuthorized
+  auth
 });
 export default connect(mapStateToProps)(Header);
