@@ -3,16 +3,20 @@ const { Schema } = mongoose;
 
 const UserSchema = new Schema({
   googleID: {
-    type: String,
-    unique: true
+    type: String
   },
   name: {
     type: String,
     required: true
   },
   facebookID: {
-    type: String,
-    unique: true
+    type: String
+  },
+  email: {
+    type: String
+  },
+  avatar: {
+    type: String
   }
 });
 const User = mongoose.model("users", UserSchema);

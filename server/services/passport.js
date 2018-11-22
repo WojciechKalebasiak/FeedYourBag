@@ -21,17 +21,20 @@ passport.use(
       callbackURL: "/auth/google/callback",
       proxy: true
     },
-    (accessToken, refreshToken, profile, done) => {
-      User.findOne({ googleID: profile.id }).then(user => {
-        if (user) {
-          done(null, user);
-        } else {
-          new User({ googleID: profile.id, name: profile.displayName })
-            .save()
-            .then(user => done(null, user))
-            .catch(err => done(err));
-        }
-      });
+    async (accessToken, refreshToken, profile, done) => {
+      console.log(profile);
+      const existingUser = await User.findOne({ googleID: profile.id });
+      if (existingUser) {
+        done(null, existingUser);
+      } else {
+        const newUser = await new User({
+          googleID: profile.id,
+          name: profile.displayName,
+          email: profile.emails[0].value,
+          avatar: profile.image ? profile.image.url : null
+        }).save();
+        done(null, newUser);
+      }
     }
   )
 );
@@ -40,19 +43,23 @@ passport.use(
     {
       clientID: keys.facebookClientID,
       clientSecret: keys.facebookClientSecret,
-      callbackURL: "https://damp-ocean-90152.herokuapp.com/auth/facebook/callback"
+      callbackURL: "/auth/facebook/callback",
+      profileFields: ["id", "displayName", "emails", "photos"]
     },
-    (accessToken, refreshToken, profile, done) => {
-      User.findOne({ facebookID: profile.id }).then(user => {
-        if (user) {
-          done(null, user);
-        } else {
-          new User({ facebookID: profile.id, name: profile.displayName })
-            .save()
-            .then(user => done(null, user))
-            .catch(err => done(err));
-        }
-      });
+    async (accessToken, refreshToken, profile, done) => {
+      console.log(profile);
+      const existingUser = await User.findOne({ facebookID: profile.id });
+      if (existingUser) {
+        done(null, existingUser);
+      } else {
+        const newUser = await new User({
+          facebookID: profile.id,
+          name: profile.displayName,
+          email:profile.emails[0].value,
+          avatar:profile.photos ? profile.photos[0].value : null
+        }).save();
+        done(null, newUser);
+      }
     }
   )
 );
