@@ -11,7 +11,7 @@
     "start": "node server/index.js",
     "watch": "nodemon server",
     "client": "npm run start --prefix client",
-    "dev": "run-p client start"
+    "dev": "run-p client watch"
   },
   "author": "WojciechKaleb",
   "license": "ISC",
