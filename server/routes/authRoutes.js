@@ -4,19 +4,15 @@ router.get(
   "/google",
   passport.authenticate("google", { scope: ["profile", "email"] })
 );
-router.get(
-  "/google/callback",
-  passport.authenticate("google", {
-    successRedirect: "/dashboard",
-    failureRedirect: "/"
-  })
-);
+router.get("/google/callback", passport.authenticate("google"), (req, res) => {
+  res.redirect("/");
+});
 router.get("/facebook", passport.authenticate("facebook"));
 router.get(
   "/facebook/callback",
-  passport.authenticate("facebook", {
-    successRedirect: "/dashboard",
-    failureRedirect: "/"
-  })
+  passport.authenticate("facebook"),
+  (req, res) => {
+    res.redirect("/");
+  }
 );
 module.exports = router;

@@ -4,6 +4,7 @@ const app = express();
 const cookieSession = require("cookie-session");
 const keys = require("./config/keys");
 const passport = require("passport");
+const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 //Connect to mongo
 mongoose.connect(
@@ -12,6 +13,9 @@ mongoose.connect(
 );
 mongoose.Promise = Promise;
 
+//BodyParser config
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 //Pasport Config
 require("./services/passport");
 app.use(
