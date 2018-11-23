@@ -11,7 +11,8 @@
     "start": "node server/index.js",
     "watch": "nodemon server",
     "client": "npm run start --prefix client",
-    "dev": "run-p client start"
+    "dev": "run-p client start",
+    "heroku-postbuild": "npm install --prefix client && npm run build --prefix client"
   },
   "author": "WojciechKaleb",
   "license": "ISC",
