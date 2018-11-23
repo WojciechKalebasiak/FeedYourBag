@@ -7,7 +7,10 @@ router.get(
 router.get("/google/callback", passport.authenticate("google"), (req, res) => {
   res.redirect("/");
 });
-router.get("/facebook", passport.authenticate("facebook"));
+router.get(
+  "/facebook",
+  passport.authenticate("facebook", { scope: ["email"] })
+);
 router.get(
   "/facebook/callback",
   passport.authenticate("facebook"),
