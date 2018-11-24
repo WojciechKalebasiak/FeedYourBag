@@ -24,4 +24,7 @@ router.post("/payment", requireLogin, async (req, res) => {
   const updatedUser = await req.user.save();
   res.send(updatedUser);
 });
+//Survey routes
+const surveyRoutes = require("./surveyRoutes");
+router.use("/surveys", surveyRoutes);
 module.exports = router;
