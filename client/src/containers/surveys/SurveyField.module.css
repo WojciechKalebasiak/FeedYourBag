@@ -1,0 +1,25 @@
+.SurveyField {
+    display: block;
+}
+
+.Label {
+    font-family: 'Merriweather', serif;
+    color: grey;
+    display: block;
+    margin: 25px 0;
+}
+
+.Input {
+    font-size: 1.2em;
+    width: 80%;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid black;
+}
+.Input:focus {
+    border-bottom-color: royalblue;
+}
+.Error {
+    margin-top: 15px;
+    color: tomato;
+}

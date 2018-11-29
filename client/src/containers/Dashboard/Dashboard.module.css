@@ -2,10 +2,21 @@
     text-align: center;
 }
 
-.fadeEnter {
-    background-color: red
+.AddSurveyBtn {
+    background-color: #aa2e40;
+    border-radius: 50%;
+    padding: 20px;
+    position: fixed;
+    bottom: 15%;
+    right: 15%;
+    color: whitesmoke;
+    transition: padding 0.5s ease-in;
 }
 
-.fadeEnterActive {
-    background-color: blue;
+.AddSurveyBtn:hover {
+    padding: 25px;
+}
+
+.AddSurveyBtn i {
+    vertical-align: middle;
 }

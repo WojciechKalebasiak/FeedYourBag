@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import Dashboard from "../Dashboard/Dashboard";
 import Header from "../Header/Header";
 import Home from "../../components/Home/Home";
+import SurveyNew from "../surveys/SurveyNew";
 class App extends Component {
   componentDidMount() {
     this.props.fetchUser();
@@ -17,6 +18,7 @@ class App extends Component {
           <div className="container">
             <Route path="/" exact component={Home} />
             <Route path="/dashboard" exact component={Dashboard} />
+            <Route path="/new-survey" component={SurveyNew} />
           </div>
         </React.Fragment>
       </BrowserRouter>

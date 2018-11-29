@@ -264,9 +264,9 @@ img.fullwidth, img.fullwidthOnMobile {
                   <div class="">
 <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 30px; padding-bottom: 10px;"><![endif]-->
 <div style="color:#555555;line-height:120%;font-family:TimesNewRoman, 'Times New Roman', Times, Beskerville, Georgia, serif; padding-right: 10px; padding-left: 10px; padding-top: 30px; padding-bottom: 10px;">	
-  <div style="font-size:12px;line-height:14px;color:#555555;font-family:TimesNewRoman, 'Times New Roman', Times, Beskerville, Georgia, serif;text-align:left;"><p style="margin: 0;font-size: 12px;line-height: 14px"><span style="line-height: 21px; font-size: 18px;">${
+  <div style="font-size:12px;line-height:14px;color:#555555;font-family:TimesNewRoman, 'Times New Roman', Times, Beskerville, Georgia, serif;text-align:left;"><p style="margin: 0;font-size: 12px;line-height: 14px"><span style="line-height: 21px; font-size: 18px;"><span style="line-height: 21px; font-size: 18px;">${
     survey.body
-  }<span style="line-height: 21px; font-size: 18px;">pytanie</span></span></p></div>	
+  }</span></span></p></div>	
 </div>
 <!--[if mso]></td></tr></table><![endif]-->
 </div>

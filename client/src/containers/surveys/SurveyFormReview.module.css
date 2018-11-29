@@ -1,0 +1,11 @@
+.Heading {
+    font-size: 2.5em;
+}
+.Label {
+    font-size: 1.2em;
+    color: grey;
+    margin-top: 50px;
+}
+.Wrapper {
+    margin-top: 30px;
+}

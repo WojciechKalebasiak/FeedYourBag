@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { withRouter, Redirect } from "react-router-dom";
+import { withRouter, Redirect, Link } from "react-router-dom";
 import { connect } from "react-redux";
 import Spinner from "../../components/Spinner/Spinner";
 import styles from "./Dashboard.module.css";
@@ -12,7 +12,13 @@ class Dashboard extends Component {
       case false:
         return <Redirect to="/" />;
       default:
-        return <div>Dashboard</div>;
+        return (
+          <div>
+            <Link to="/new-survey" className={styles.AddSurveyBtn}>
+              <i className="large material-icons">add</i>
+            </Link>
+          </div>
+        );
     }
   }
   render() {
