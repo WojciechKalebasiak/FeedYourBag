@@ -36,9 +36,6 @@ app.use("/auth", auth);
 const api = require("./routes/apiRoutes");
 app.use("/api", api);
 
-app.get("/thanks", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "services", "Mailer", "thanks.html"));
-});
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
   app.get("*", (req, res) => {

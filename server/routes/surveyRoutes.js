@@ -1,4 +1,8 @@
 const router = require("express").Router();
+const _ = require("lodash");
+const { URL } = require("url");
+const { Path } = require("path-parser");
+const path = require("path");
 const requireLogin = require("../middleware/requireLogin");
 const requireCredits = require("../middleware/requireCredits");
 const Survey = require("../models/Surveys");
@@ -28,5 +32,38 @@ router.post("/new", requireLogin, requireCredits, async (req, res) => {
   } catch (e) {
     res.status(400).send(e);
   }
+});
+router.post("/webhooks", (req, res) => {
+  const p = new Path("/api/surveys/:surveyID/:choice");
+  const events = req.body.map(({ email, url }) => {
+    const { pathname } = new URL(url);
+    const match = p.test(pathname);
+    if (match) {
+      return {
+        email,
+        ...match
+      };
+    }
+  });
+  const filtredEvents = events.filter(event => event !== undefined);
+  const uniqueEvents = _.uniqBy(filtredEvents, "email", "surveyID");
+  uniqueEvents.forEach(({ surveyID, email, choice }) => {
+    Survey.updateOne(
+      {
+        _id: surveyID,
+        recipients: {
+          $elemMatch: { email: email, responded: false }
+        }
+      },
+      {
+        $inc: { [choice]: 1 },
+        $set: { "recipients.$.responded": true },
+        lastResponded: new Date()
+      }
+    ).exec();
+  });
+});
+router.get("/:surveyID/:choice", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "..", "services", 'Mailer', "thanks.html"));
 });
 module.exports = router;
