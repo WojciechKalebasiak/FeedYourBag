@@ -8,6 +8,12 @@ const requireCredits = require("../middleware/requireCredits");
 const Survey = require("../models/Surveys");
 const Mailer = require("../services/Mailer/Mailer");
 const surveyTemplate = require("../services/Mailer/emailTemplates/surveyTemplate");
+router.get("/", requireLogin, async (req, res) => {
+  const surveys = await Survey.find({ _owner: req.user.id }).select({
+    recipients: false
+  });
+  res.send(surveys);
+});
 router.post("/new", requireLogin, requireCredits, async (req, res) => {
   const { title, subject, body, recipients } = req.body;
   const { amountOfMails } = res.locals;
@@ -64,6 +70,8 @@ router.post("/webhooks", (req, res) => {
   });
 });
 router.get("/:surveyID/:choice", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "..", "services", 'Mailer', "thanks.html"));
+  res.sendFile(
+    path.resolve(__dirname, "..", "services", "Mailer", "thanks.html")
+  );
 });
 module.exports = router;
