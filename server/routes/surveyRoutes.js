@@ -68,6 +68,7 @@ router.post("/webhooks", (req, res) => {
       }
     ).exec();
   });
+  res.end();
 });
 router.get("/:surveyID/:choice", (req, res) => {
   res.sendFile(
