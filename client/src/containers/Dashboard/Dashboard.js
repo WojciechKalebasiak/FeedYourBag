@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { withRouter, Redirect, Link } from "react-router-dom";
 import { connect } from "react-redux";
 import Spinner from "../../components/Spinner/Spinner";
+import SurveyList from "../surveys/SurveyList";
 import styles from "./Dashboard.module.css";
 class Dashboard extends Component {
   dashboardContent() {
@@ -14,6 +15,7 @@ class Dashboard extends Component {
       default:
         return (
           <div>
+            {<SurveyList />}
             <Link to="/new-survey" className={styles.AddSurveyBtn}>
               <i className="large material-icons">add</i>
             </Link>

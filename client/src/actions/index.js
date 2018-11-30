@@ -13,3 +13,7 @@ export const sendSurvey = (values, history) => async dispatch => {
   history.push("/dashboard");
   dispatch({ type: actionTypes.FETCH_USER, payload: res.data });
 };
+export const fetchSurveys = () => async dispatch => {
+  const res = await axios.get("/api/surveys");
+  dispatch({ type: actionTypes.FETCH_SURVEYS, payload: res.data });
+};
